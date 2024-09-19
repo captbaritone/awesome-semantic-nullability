@@ -16,6 +16,9 @@ For a client to take advantage of the Semantic Nullability proposal, it must hav
   - [@catch](https://www.apollographql.com/docs/kotlin/advanced/nullability/#catch) lets you convert field errors into result types, or opt into explicitly throwing field errors with `@catch(to: THROW)`.
   - [@semanticNonNull](https://www.apollographql.com/docs/kotlin/advanced/nullability/#semanticnonnull) is understood by the Apollo Kotlin code generator.
   - [Nullability](https://www.apollographql.com/docs/kotlin/advanced/nullability/) overall documentation for nullability in Apollo Kotlin.
+- Apollo Client, URQL, `fetch()` and `fetch()`-based clients such as [graffle](https://github.com/jasonkuhrt/graffle) that give access to the response's `data` and `errors`:
+  - can support "throw on field error" via the `graphql-toe` npm module; see "Standalone Tools" below.
+  - can, if they're using "throw on field error", treat semantic non-null types as if they were strict non-null types (e.g. when integrating with GraphQL Code Generator).
 
 ## GraphQL Servers
 
@@ -30,8 +33,9 @@ For a GraphQL servers to support Semantic Nullability it must provide a mechanis
 
 In some cases clients or servers that don't have built-in support for Semantic Nullability can be combined with standalone tools that add support.
 
-- [GraphQL TOE](https://github.com/graphile/graphql-toe) - Converts a GraphQL response containing data+errors into a single data tree where fields that are in an error state will throw when accessed.
-  - For very simple GraphQL clients (e.g. `fetch()`), this will allow you to use the semantic non-null types while still having granular error handling, since you can test React error boundaries or simply nest try/catch blocks around the data access.
+- [`graphql-toe`](https://github.com/graphile/graphql-toe) - converts a GraphQL response containing data+errors into a single data tree where fields that have an associated error will throw when read from.
+  - Provides granular error handling using `try/catch` or React error boundaries or similar.
+  - This means _semantic_ non-null types may be treated as if they were _strict_ non-null types for type generation - fewer null checks required!
 
 ## Works in Progress
 
