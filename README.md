@@ -18,7 +18,7 @@ For a client to take advantage of the Semantic Nullability proposal, it must hav
   - [Nullability](https://www.apollographql.com/docs/kotlin/advanced/nullability/) overall documentation for nullability in Apollo Kotlin.
 - Apollo Client, URQL, `fetch()` and `fetch()`-based clients such as [graffle](https://github.com/jasonkuhrt/graffle) that give access to the response's `data` and `errors`:
   - can support "throw on field error" via the `graphql-toe` npm module; see "Standalone Tools" below.
-  - can, if they're using "throw on field error", treat semantic non-null types as if they were strict non-null types (e.g. when integrating with GraphQL Code Generator).
+  - can convert semantic nullability schema into traditional schema (e.g. for code generation / legacy tooling integration) using the `graphql-sock` npm module; see "Standalone Tools" blow.
 
 ## GraphQL Servers
 
@@ -35,7 +35,9 @@ In some cases clients or servers that don't have built-in support for Semantic N
 
 - [`graphql-toe`](https://github.com/graphile/graphql-toe) - converts a GraphQL response containing data+errors into a single data tree where fields that have an associated error will throw when read from.
   - Provides granular error handling using `try/catch` or React error boundaries or similar.
-  - This means _semantic_ non-null types may be treated as if they were _strict_ non-null types for type generation - fewer null checks required!
+  - Means _semantic_ non-null types may be treated as if they were _strict_ non-null types for type generation - see `graphql-sock` below.
+- [`graphql-sock`](https://github.com/graphile/graphql-sock) - takes a semantic nullability schema SDL and converts it into a traditional SDL either by stripping semantic-non-nulls (`semantic-to-nullable`), or by converting them to strict non-nulls (`semantic-to-strict`).
+  - When combined with `graphql-toe`, use `semantic-to-strict` for type generation and fewer null checks will be required!
 
 ## Works in Progress
 
