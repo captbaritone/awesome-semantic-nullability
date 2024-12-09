@@ -24,6 +24,7 @@ For a client to take advantage of the Semantic Nullability proposal, it must hav
 
 For a GraphQL servers to support Semantic Nullability it must provide a mechanism to add `@semanticNonNull` to fields which it knows will only be null in the case of error.
 
+- [Hot Chocolate](https://chillicream.com/docs/hotchocolate/) - Hot Chocolate, an implementation-first GraphQL server for C#, has experimental suppport for `@semanticNonNull` as of [version 14.2.0](https://github.com/ChilliCream/graphql-platform/releases/tag/14.2.0).
 - [Grats](https://grats.capt.dev/) - Grats, an implementation-first GraphQL server, has opt-in support for adding automatically `@semanticNonNull` to fields whose TypeScript types are non-nullable.
   - [Strict Semantic Nullability](https://grats.capt.dev/docs/guides/strict-semantic-nullability/) overall documentation for Semantic Nullability in Grats.
 - [Caliban Server](https://ghostdogpr.github.io/caliban) - Caliban, a GraphQL server for Scala, has opt-in support for auto-matically adding `@semanticNonNull` to fields whose Scala types fields that don't get resolved to nullable types .
