@@ -39,6 +39,10 @@ In some cases clients or servers that don't have built-in support for Semantic N
   - Means _semantic_ non-null types may be treated as if they were _strict_ non-null types for type generation - see `graphql-sock` below.
 - [`graphql-sock`](https://github.com/graphile/graphql-sock) - takes a semantic nullability schema SDL and converts it into a traditional SDL either by stripping semantic-non-nulls (`semantic-to-nullable`), or by converting them to strict non-nulls (`semantic-to-strict`).
   - When combined with `graphql-toe`, use `semantic-to-strict` for type generation and fewer null checks will be required!
+- [`graphql-code-generator`](https://github.com/dotansimha/graphql-code-generator) - now supports `@semanticNonNull` and can generate types accordingly for server/clients that support it. It is currently in alphas:
+  - `@graphql-codegen/typescript-resolvers@4.5.0-alpha-20250320130201-1cf1924a1da9258b15294b0251bba9dc61aa9ad4`
+  - `@graphql-codegen/typescript-operations@4.6.0-alpha-20250326083144-739ada6d1bd51f5f1a505e18b205b099c796aad3`
+  - `@graphql-codegen/client-preset@4.8.0-alpha-20250326083144-739ada6d1bd51f5f1a505e18b205b099c796aad3`
 
 ## Works in Progress
 
