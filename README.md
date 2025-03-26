@@ -16,6 +16,8 @@ For a client to take advantage of the Semantic Nullability proposal, it must hav
   - [@catch](https://www.apollographql.com/docs/kotlin/advanced/nullability/#catch) lets you convert field errors into result types, or opt into explicitly throwing field errors with `@catch(to: THROW)`.
   - [@semanticNonNull](https://www.apollographql.com/docs/kotlin/advanced/nullability/#semanticnonnull) is understood by the Apollo Kotlin code generator.
   - [Nullability](https://www.apollographql.com/docs/kotlin/advanced/nullability/) overall documentation for nullability in Apollo Kotlin.
+- [urql] - can become an error-handling client using [`graphql-toe`](https://github.com/graphile/graphql-toe):
+  - Use the [`@urql/exchange-throw-on-error`](https://github.com/urql-graphql/urql/tree/main/exchanges/throw-on-error) exchange.
 - Apollo Client, URQL, `fetch()` and `fetch()`-based clients such as [graffle](https://github.com/jasonkuhrt/graffle) that give access to the response's `data` and `errors`:
   - can support "throw on field error" via the `graphql-toe` npm module; see "Standalone Tools" below.
   - can convert semantic nullability schema into traditional schema (e.g. for code generation / legacy tooling integration) using the `graphql-sock` npm module; see "Standalone Tools" blow.
@@ -46,3 +48,6 @@ Here we collect in-progress pull requests or issues that are working towards add
 
 - [graphql-js](https://github.com/graphql/graphql-js) - The reference implementation of GraphQL in JavaScript maintained by the GraphQL working group.
   - [Experimental support for semantic-non-null #4192](https://github.com/graphql/graphql-js/pull/4192) pull request to add experimental support for semantic-non-null to graphql-js.
+  - [`@experimental_disablePropagation`](https://github.com/graphql/graphql-js/pull/4348) is merged, planned for graphql-js 17.
+- [graphql-java]([https://github.com/graphql/graphql-js](https://github.com/graphql-java/graphql-java/)) - The reference implementation of GraphQL in Java.
+  - [`@experimental_disablePropagation`](https://github.com/graphql-java/graphql-java/pull/3772) is merged, planned for graphql-java 22.4.
